@@ -9,7 +9,7 @@ typedef struct group * group;
  * @param nb_elements Le nombre d'éléments répartis en différents groupes
  * @param element_to_group Le tableau des éléments répartis en différents groupes
  * @return Un nouveau @ref group
- * @warning Après utilisation, libérer les ressources en appelant : \ref group_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref group_delete()
  *
  * @note La numérotation des groupes est @b normalisée :
  *      @li Aucun groupe n'est vide.

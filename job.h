@@ -14,7 +14,7 @@ typedef struct job * job;
  * @param id L'ID du job
  * @param nb_machines Le nombre de machines dans l'instance à laquelle le job appartient
  * @return Un nouveau job
- * @warning Après utilisation, libérer les ressources en appelant : \ref job_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref job_delete()
  */
 job job_new(unsigned int id, unsigned int nb_machines);
 /*! Fonction qui libère les ressources utilisées par un job

@@ -23,7 +23,7 @@ void nearest_neighboor(routing r, site * sites)
 
         for(index = position + 1; index < n; ++index)
         {
-            distance = site_get_travelling_time(previous_site, site_get_id(sites[best_index]));
+            distance = site_get_travelling_time(previous_site, site_get_id(sites[index]));
 
             if(distance < min_distance)
             {

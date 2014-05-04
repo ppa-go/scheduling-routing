@@ -1,6 +1,7 @@
 #include "solution.h"
 
 #include "group.h"
+#include "calculate_tardiness.h"
 #include <stdlib.h>
 
 
@@ -26,8 +27,8 @@ solution solution_new(instance data, unsigned int * job_to_group)
     solution new_solution = (solution) malloc(sizeof(struct solution));
     const unsigned int nb_machines = instance_get_nb_machines(data),
                        nb_jobs = instance_get_nb_jobs(data);
-    site factory = instance_extract_site(data, SITE_ID_FACTORY);
     group groups = group_new(nb_jobs, job_to_group);
+    site factory = instance_extract_site(data, SITE_ID_FACTORY);
     const unsigned int nb_groups = group_get_nb_groups(groups);
     unsigned int id_group, nb_elements_in_group, index, id_element;
 
@@ -128,37 +129,13 @@ routing solution_get_routing_for_group(solution __solution, unsigned int id_grou
 unsigned int solution_get_tardiness(solution __solution)
 {
     const unsigned int nb_groups = group_get_nb_groups(__solution->groups);
-    unsigned int nb_elements_in_group,
-                 id_group,
-                 job_position,
-                 site_position,
-                 due_date,
-                 delivery_date,
+    unsigned int id_group,
                  tardiness = 0;
 
     /* Pour chaque groupe */
-    for(id_group = 1; id_group <= nb_groups; ++id_group)
+    for(id_group = 0; id_group < nb_groups; ++id_group)
     {
-        nb_elements_in_group = group_get_nb_elements_in_group(__solution->groups, id_group);
-        /* Pour chaque job dans le groupe */
-        for(job_position = 1; job_position <= nb_elements_in_group; ++job_position)
-        {
-            /* Retrouver la position du site de livraison pour le routing */
-            for(site_position = 1; site_position <= nb_elements_in_group; ++site_position)
-            {
-                if(site_get_id(__solution->sites_per_group[id_group - 1][site_position - 1]) == job_get_id_delivery_site(__solution->jobs_per_group[id_group - 1][job_position - 1]))
-                {
-                    break;
-                }
-            }
-            /* Mettre à jour la somme des retards */
-            due_date = job_get_due_date(__solution->jobs_per_group[id_group - 1][job_position - 1]);
-            delivery_date = routing_get_delivery_date(__solution->routings[id_group - 1], site_position);
-            if(delivery_date > due_date)
-            {
-                tardiness += delivery_date - due_date;
-            }
-        }
+        tardiness += calculate_tardiness(__solution->flowshops[id_group], __solution->jobs_per_group[id_group], __solution->routings[id_group], __solution->sites_per_group[id_group]);
     }
 
     return tardiness;

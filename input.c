@@ -18,26 +18,7 @@
  *      @li @em *line reste inchangé.
  *      @li @em *result reste inchangé ;
  */
-int get_first_number(const char ** line, unsigned int * result)
-{
-    const char * current_char_ptr;
-
-    /* La chaîne de caractère doit commencer par un chiffre. */
-    if(!(('0' <= **line) && (**line <= '9'))) { return 0; }
-
-    /* La chaine est parsée, jusqu'à ce qu'un séparateur (un caractère qui n'est pas un chiffre) soit trouvé. */
-    *result = 0;
-    for(current_char_ptr = *line; ('0' <= *current_char_ptr) && (*current_char_ptr <= '9'); ++current_char_ptr)
-    {
-        *result = *result * 10 + (unsigned int) (*current_char_ptr - '0');
-    }
-
-    /* On fait en sorte que *line pointe sur le caractère qui suit le séparateur trouvé, s'il existe. (Attention au cas de la chaîne vide "\0" !) */
-    if(*current_char_ptr != '\0') { ++current_char_ptr; }
-    *line = current_char_ptr;
-
-    return 1;
-}
+int get_first_number(const char ** line, unsigned int * result);
 
 
 
@@ -105,4 +86,25 @@ int read_instance(instance * __instance, const char * filename)
     fclose(file);
 
     return INPUT_SUCCESS;
+}
+
+int get_first_number(const char ** line, unsigned int * result)
+{
+    const char * current_char_ptr;
+
+    /* La chaîne de caractère doit commencer par un chiffre. */
+    if(!(('0' <= **line) && (**line <= '9'))) { return 0; }
+
+    /* La chaine est parsée, jusqu'à ce qu'un séparateur (un caractère qui n'est pas un chiffre) soit trouvé. */
+    *result = 0;
+    for(current_char_ptr = *line; ('0' <= *current_char_ptr) && (*current_char_ptr <= '9'); ++current_char_ptr)
+    {
+        *result = *result * 10 + (unsigned int) (*current_char_ptr - '0');
+    }
+
+    /* On fait en sorte que *line pointe sur le caractère qui suit le séparateur trouvé, s'il existe. (Attention au cas de la chaîne vide "\0" !) */
+    if(*current_char_ptr != '\0') { ++current_char_ptr; }
+    *line = current_char_ptr;
+
+    return 1;
 }

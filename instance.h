@@ -13,7 +13,7 @@ typedef struct instance * instance;
  * @param nb_jobs Le nombre de jobs dans l'instance à créer
  * @param nb_sites Le nombre de sites dans l'instance à créer
  * @return Une nouvelle instance
- * @warning Après utilisation, libérer les ressources en appelant : \ref instance_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref instance_delete()
  */
 instance instance_new(unsigned int nb_machines, unsigned int nb_jobs, unsigned int nb_sites);
 /*! Fonction qui libère les ressources utilisées par une instance

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['calculate_5ftardiness',['calculate_tardiness',['../d9/d2a/calculate__tardiness_8h.html#a00325be88af5719738376deea010aeea',1,'calculate_tardiness.c']]],
   ['chrono_5fdelete',['chrono_delete',['../dd/d90/chrono_8h.html#a1fa05266972f5293dc9f9c80dacc95c5',1,'chrono.c']]],
   ['chrono_5fget_5ftime',['chrono_get_time',['../dd/d90/chrono_8h.html#a038549b2a88c52ef98aa7c36c86fc65c',1,'chrono.c']]],
   ['chrono_5fnew',['chrono_new',['../dd/d90/chrono_8h.html#ace4d80cbb61daf508e6b3becf9420c4d',1,'chrono.c']]],

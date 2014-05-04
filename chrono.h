@@ -7,7 +7,7 @@ typedef struct chrono * chrono;
 
 /*! Fonction qui crée un nouveau chronomètre
  * @return Un nouveau chronomètre
- * @warning Après utilisation, libérer les ressources en appelant : \ref chrono_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref chrono_delete()
  */
 chrono chrono_new();
 /*! Fonction qui libère les ressources utilisées par un chronomètre

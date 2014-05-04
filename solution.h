@@ -11,10 +11,11 @@ typedef struct solution * solution;
 
 /*! Fonction qui crée une nouvelle solution
  * @param data L'instance associée à la solution à créer
- * @param job_to_group Un tableau associant un groupe à chaque job de @em data.
+ * @warning Toute modification sur @em data affectera également la solution retournée !
+ * @param job_to_group Un tableau qui indique quel job appartient à quel groupe
  * @see group_new()
  * @return Une nouvelle solution
- * @warning Après utilisation, libérer les ressources en appelant : \ref solution_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref solution_delete()
  */
 solution solution_new(instance data, unsigned int * job_to_group);
 /*! Fonction qui libère les ressources utilisées par une solution

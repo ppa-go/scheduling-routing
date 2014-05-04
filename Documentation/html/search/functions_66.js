@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['find_5ffirst_5fgroup',['find_first_group',['../de/d13/find__first__group_8h.html#a3f4729f47a9717eaeb8b610ba6735dec',1,'find_first_group.c']]],
+  ['find_5fsolution',['find_solution',['../d4/d43/find__solution_8h.html#a2863d9268a98dda71bef38fe593e2d47',1,'find_solution.c']]],
   ['flowshop_5fdelete',['flowshop_delete',['../d7/dc0/flowshop_8h.html#a5bdc431213239fbdd2dafa5e833370c1',1,'flowshop.c']]],
   ['flowshop_5fget_5favailability_5fdate',['flowshop_get_availability_date',['../d7/dc0/flowshop_8h.html#ae867175e93a9f5fdf920f3bbb0132274',1,'flowshop.c']]],
   ['flowshop_5fget_5fcurrent_5fposition',['flowshop_get_current_position',['../d7/dc0/flowshop_8h.html#ac979e22bb0ba03c936aafc3d7cc1dc64',1,'flowshop.c']]],

@@ -39,14 +39,46 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Test/test_conversion_job_void_ptr.h" />
+		<Unit filename="Test/test_find_first_group.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Test/test_find_first_group.h" />
 		<Unit filename="Test/test_group.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Test/test_group.h" />
+		<Unit filename="Test/test_nearest_neighboor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Test/test_nearest_neighboor.h" />
+		<Unit filename="Test/test_neh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Test/test_neh.h" />
+		<Unit filename="Test/test_read_instance.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Test/test_read_instance.h" />
+		<Unit filename="build_one_solution.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="build_one_solution.h" />
+		<Unit filename="calculate_tardiness.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="calculate_tardiness.h" />
 		<Unit filename="chrono.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="chrono.h" />
+		<Unit filename="find_first_group.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="find_first_group.h" />
+		<Unit filename="find_solution.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="find_solution.h" />
 		<Unit filename="flowshop.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -70,6 +102,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mutation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mutation.h" />
 		<Unit filename="nearest_neighboor.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -12,7 +12,7 @@ typedef struct site * site;
  * @param id L'ID du site à créer
  * @param nb_sites Le nombre de sites dans l'instance à laquelle le site appartient
  * @return Un nouveau site
- * @warning Après utilisation, libérer les ressources en appelant : \ref site_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref site_delete()
  */
 site site_new(unsigned int id, unsigned int nb_sites);
 /*! Fonction qui libère les ressources utilisées par un site

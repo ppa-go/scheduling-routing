@@ -11,7 +11,7 @@ typedef struct flowshop * flowshop;
  * @param nb_machines Le nombre de machines dans l'instance à laquelle le flowshop est associé
  * @param nb_jobs Le nombre de jobs dans le groupe à ordonnancer
  * @return Un nouveau flowshop
- * @warning Après utilisation, libérer les ressources en appelant : \ref flowshop_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref flowshop_delete()
  * @note La date de disponibilité au plus tôt pour chaque machine est : <em>t = 0</em>
  * @see flowshop_set_availability_date()
  * @post La position courante d'insertion de jobs est égale à 1. (aucun job inséré)

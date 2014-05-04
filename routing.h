@@ -11,7 +11,7 @@ typedef struct routing * routing;
  * @param nb_sites Le nombre de sites dans le groupe auquel le routing est associé
  * @param factory Le site correspondant à l'usine dans l'instance à laquelle le routing est associé
  * @return Un nouveau routing
- * @warning Après utilisation, libérer les ressources en appelant : \ref routing_delete()
+ * @warning Après utilisation, libérer les ressources en appelant : @ref routing_delete()
  * @note La date de début de tournée par défaut est : <em>t = 0</em>
  * @see routing_set_departure_date()
  * @post La position courante d'insertion de sites est égale à 1. (aucun site inséré)

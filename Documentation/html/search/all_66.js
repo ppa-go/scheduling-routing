@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['find_5ffirst_5fgroup',['find_first_group',['../de/d13/find__first__group_8h.html#a3f4729f47a9717eaeb8b610ba6735dec',1,'find_first_group.c']]],
+  ['find_5ffirst_5fgroup_2eh',['find_first_group.h',['../de/d13/find__first__group_8h.html',1,'']]],
+  ['find_5fsolution',['find_solution',['../d4/d43/find__solution_8h.html#a2863d9268a98dda71bef38fe593e2d47',1,'find_solution.c']]],
+  ['find_5fsolution_2eh',['find_solution.h',['../d4/d43/find__solution_8h.html',1,'']]],
   ['flowshop',['flowshop',['../da/df8/structflowshop.html',1,'']]],
   ['flowshop_2eh',['flowshop.h',['../d7/dc0/flowshop_8h.html',1,'']]],
   ['flowshop_5fdelete',['flowshop_delete',['../d7/dc0/flowshop_8h.html#a5bdc431213239fbdd2dafa5e833370c1',1,'flowshop.c']]],

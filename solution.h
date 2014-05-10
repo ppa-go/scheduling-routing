@@ -13,8 +13,11 @@ typedef struct solution * solution;
  * @param data L'instance associée à la solution à créer
  * @warning Toute modification sur @em data affectera également la solution retournée !
  * @param job_to_group Un tableau qui indique quel job appartient à quel groupe
+ * @pre @em job_to_group doit être @b normalisé !
  * @see group_new()
  * @return Une nouvelle solution
+ * @post Par défaut, le temps CPU associé à la solution vaut 0.
+ * @see solution_set_cpu_time()
  * @warning Après utilisation, libérer les ressources en appelant : @ref solution_delete()
  */
 solution solution_new(instance data, unsigned int * job_to_group);
@@ -27,6 +30,7 @@ void solution_delete(solution __solution);
 /*! Fonction qui retourne l'instance à laquelle une solution est associée
  * @param __solution Une solution
  * @return L'instance à laquelle la solution est associée
+ * @warning Toute modification sur l'instance retournée affecte également la solution.
  */
 instance solution_get_data(solution __solution);
 
@@ -81,5 +85,18 @@ routing solution_get_routing_for_group(solution __solution, unsigned int id_grou
  * @see flowshop_insert_job(), routing_insert_site()
  */
 unsigned int solution_get_tardiness(solution __solution);
+
+/*! Fonction qui permet de modifier le temps CPU utilisé pour l'obtention d'une solution
+ * @param __solution Une solution
+ * @param value Un temps CPU, en millisecondes (ms)
+ * @see solution_get_cpu_time()
+ */
+void solution_set_cpu_time(solution __solution, unsigned int value);
+/*! Fonction qui retourne le temps CPU utilisé pour l'obtention d'une solution
+ * @param __solution Une solution
+ * @return Le temps CPU associé à la solution, en millisecondes (ms)
+ * @see solution_set_cpu_time()
+ */
+unsigned int solution_get_cpu_time(solution __solution);
 
 #endif // SOLUTION_H

@@ -8,25 +8,31 @@ typedef struct group * group;
 /*! Fonction qui crée un nouveau @ref group
  * @param nb_elements Le nombre d'éléments répartis en différents groupes
  * @param element_to_group Le tableau des éléments répartis en différents groupes
+ * @pre @em element_to_group doit être @b normalisé : voir @b Note !!!
  * @return Un nouveau @ref group
  * @warning Après utilisation, libérer les ressources en appelant : @ref group_delete()
  *
- * @note La numérotation des groupes est @b normalisée :
- *      @li Aucun groupe n'est vide.
- *      @li Il n'y a aucun trou dans la numérotation.
- * @par
+ * @note Un tableau de répartition d'éléments en groupes est @b normalisé si :
+ *      @li le numéro associé au premier groupe non vide est @b 1 ;
+ *      @li la numérotation des groupes est @b continue, c'est-à-dire "sans trou". (pas de groupe intermédiaire vide)
  *
- * @em Exemple : Soit 5 éléments répartis dans les groupes suivants :
+ * @par Exemple
+ *  Soit 5 éléments répartis dans les groupes suivants :
+ *  @li <tt> unsigned int @b tab1[] = {5, 2, 4, 5, 2}; </tt> <br>
+ *      @b tab1 n'est pas normalisé, car aucun job n'appartient au groupe 1. <br>
+ *  @li <tt> unsigned int @b tab2[] = {4, 1, 3, 4, 3}; </tt> <br>
+ *      @b tab2 n'est pas normalisé : les groupes 3 et 4 ne sont pas vides alors que le groupe 2 est vide. <br>
+ *  @li <tt> unsigned int @b tab3[] = {3, 1, 2, 3, 2}; </tt> <br>
+ *      @b tab3 est @em normalisé.
  *
- * <tt> const unsigned int <b>element_to_group</b>[] = {4, 1, 3, 4, 3}; </tt>
- *
- * La @b normalisation des groupes donne le résultat suivant :
- *      @li Nombre de groupes = 3
- *      @li Eléments du groupe 1 : 2
- *      @li Eléments du groupe 2 : 3, 5
- *      @li Eléments du groupe 3 : 1, 4
- *
- * Puisque les groupes 2 et 5 sont vides, ils n'apparaissent plus. La nouvelle numérotation est sans trou.
+ *  On peut remarquer que les configurations représentées par @b tab1, @b tab2 et @b tab3 sont équivalentes :
+ *      @li Nombre de groupes <em>non vides</em> = 3
+ *      @li Répartition des jobs :
+ *          <ol>
+ *              <li>Jobs dans le premier groupe <em>non vide</em> : job 2</li>
+ *              <li>Jobs dans le deuxième groupe <em>non vide</em> : job 3, job 5</li>
+ *              <li>Jobs dans le troisième groupe <em>non vide</em> : job 1, job 4</li>
+ *          </ol>
  */
 group group_new(unsigned int nb_elements, unsigned int * element_to_group);
 /*! Fonction qui libère les ressources utilisées par un @ref group

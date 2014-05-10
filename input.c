@@ -12,11 +12,12 @@
  * @pre @em result ne doit pas être @em NULL.
  * @return @b true <em>(valeur non nulle)</em> si la chaîne de caractères commence par un chiffre (la lecture a réussi), @b false <em>(valeur nulle)</em> sinon (la lecture a échoué)
  * @post Si la fonction retourne @b true, alors :
- *      @li @em *line pointe sur le reste de la chaîne, en sautant un éventuel caractère de séparation.
+ *      @li @em *line pointe sur la prochaine valeur (si elle existe) dans la chaîne, en sautant un (ou plusieurs) caractère(s) de séparation.
  *      @li @em *result est égal à la valeur positive entière contenue au début de la chaîne ;
  * @post Si la fonction retourne @b false, alors :
  *      @li @em *line reste inchangé.
  *      @li @em *result reste inchangé ;
+ * @note Un caractère de séparation est un caractère non nul (@tt '\0') qui n'est pas un chiffre.
  */
 int get_first_number(const char ** line, unsigned int * result);
 
@@ -102,8 +103,8 @@ int get_first_number(const char ** line, unsigned int * result)
         *result = *result * 10 + (unsigned int) (*current_char_ptr - '0');
     }
 
-    /* On fait en sorte que *line pointe sur le caractère qui suit le séparateur trouvé, s'il existe. (Attention au cas de la chaîne vide "\0" !) */
-    if(*current_char_ptr != '\0') { ++current_char_ptr; }
+    /* On fait en sorte que *line pointe sur la prochaine valeur, si elle existe. */
+    while((*current_char_ptr != '\0') && (!(('0' <= *current_char_ptr) && (*current_char_ptr <= '9')))) { ++current_char_ptr; }
     *line = current_char_ptr;
 
     return 1;

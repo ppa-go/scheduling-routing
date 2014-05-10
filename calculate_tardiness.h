@@ -10,10 +10,10 @@
  * @pre Tous les paramètres sont associés à un même groupe.
  * @param fs Un flowshop
  * @param jobs Un tableau de jobs
- * @pre @ref neh() a été appelée avec le couple ( @em fs, @em jobs ).
+ * @pre @ref neh() a été appelée avec le couple (@em fs, @em jobs).
  * @param r Un routing
  * @param sites Un tableau de sites
- * @pre @ref nearest_neighboor() a été appelée avec le couple ( @em fs, @em jobs ).
+ * @pre @ref nearest_neighboor() a été appelée avec le couple (@em r, @em sites).
  * @return Le retard accumulé par ce groupe
  */
 unsigned int calculate_tardiness(flowshop fs, job * jobs, routing r, site * sites);

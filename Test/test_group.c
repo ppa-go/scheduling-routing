@@ -6,7 +6,7 @@
 void test_group()
 {
     unsigned int nombre_elements = 5,
-                 tableau_groupes[] = {4,1,3,4,3};
+                 tableau_groupes[] = {3,1,2,3,2};
 
     group group_var = group_new(nombre_elements, tableau_groupes);
     unsigned int id_group, index_element, id_element;

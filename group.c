@@ -22,66 +22,46 @@ struct group
 group group_new(unsigned int nb_elements, unsigned int * element_to_group)
 {
     group new_group = (group) malloc(sizeof(struct group));
+    unsigned int nb_groups = 1,
+                 id_group,
+                 loop,
+                 ** indexes;
 
-    /* 1. Déclaration et initialisation des ressources temporaires */
-    unsigned int * nb_elements_per_group = (unsigned int *) calloc(nb_elements, sizeof(unsigned int)),
-                 nb_groups = 0,
-                 id_element,
-                 group_index,
-                 element_index,
-                 id_group;
-    /* 2. Compter le nombre d'éléments par groupe (il y en a au plus 'nb_elements') */
-    for(id_element = 0; id_element < nb_elements; ++id_element)
+    /* Recherche du nombre de groupes == numéro de groupe maximal */
+    for(loop = 0; loop < nb_elements; ++loop)
     {
-        ++(nb_elements_per_group[element_to_group[id_element] - 1]);
+        if(element_to_group[loop] > nb_groups) { nb_groups = element_to_group[loop]; }
     }
-    /* 3. Copier 'nb_elements' et 'element_to_group' dans 'new_group' en normalisant la numérotation des groupes */
+
+    /* Initialisation de 'group_new' : element -> quel est son groupe ? (Recopie de 'nb_elements' et 'element_to_group') */
     new_group->nb_elements = nb_elements;
     new_group->element_to_group = (unsigned int *) malloc(nb_elements * sizeof(unsigned int));
-    for(id_element = 0; id_element < nb_elements; ++id_element)
+    for(loop = 0; loop < nb_elements; ++loop)
     {
-        id_group = element_to_group[id_element];
-        for(group_index = 0; group_index < element_to_group[id_element]; ++group_index)
-        {
-            if(nb_elements_per_group[group_index] == 0) { --id_group; }
-        }
+        new_group->element_to_group[loop] = element_to_group[loop];
+    }
 
-        new_group->element_to_group[id_element] = id_group;
-    }
-    /* 4. Compter le nombre de groupes non vides (avec au moins un élément) */
-    for(group_index = 0; group_index < nb_elements; ++group_index)
-    {
-        if(nb_elements_per_group[group_index] > 0) { ++nb_groups; }
-    }
-    /* 5. Construire les groupes, en ignorant les éventuels groupes vides */
+    /* Initialisation de 'group_new' : groupe -> quels sont les éléments dans ce groupe ? */
     new_group->nb_groups = nb_groups;
-    new_group->nb_elements_per_group = (unsigned int *) malloc(nb_groups * sizeof(unsigned int));
-    new_group->elements_per_group = (unsigned int **) malloc(nb_groups * sizeof(unsigned int *));
-
-    group_index = 0;
-    for(id_group = 0; id_group < nb_groups; ++id_group)
+    /* Comptage du nombre d'éléments par groupe */
+    new_group->nb_elements_per_group = (unsigned int *) calloc(nb_groups, sizeof(unsigned int));
+    for(loop = 0; loop < nb_elements; ++loop)
     {
-        /* Recherche d'un groupe non vide */
-        while(nb_elements_per_group[group_index] == 0) { ++group_index; }
-
-        new_group->nb_elements_per_group[id_group] = nb_elements_per_group[group_index];
-        new_group->elements_per_group[id_group] = (unsigned int *) malloc(nb_elements_per_group[group_index] * sizeof(unsigned int));
-
-        id_element = 0;
-        for(element_index = 0; element_index < nb_elements_per_group[group_index]; ++element_index)
-        {
-            /* Recherche d'un élément dans le groupe */
-            while(element_to_group[id_element] != group_index + 1) { ++id_element; }
-
-            new_group->elements_per_group[id_group][element_index] = id_element + 1;
-
-            ++id_element;
-        }
-
-        ++group_index;
+        ++(new_group->nb_elements_per_group[element_to_group[loop] - 1]);
     }
-    /* 6. Libération des ressources temporaires */
-    free(nb_elements_per_group);
+    /* Insertion de chaque élément dans son groupe */
+    new_group->elements_per_group = (unsigned **) malloc(nb_groups * sizeof(unsigned int *));
+    indexes = (unsigned **) malloc(nb_groups * sizeof(unsigned int *));
+    for(id_group = 1; id_group <= nb_groups; ++id_group)
+    {
+        new_group->elements_per_group[id_group - 1] = (unsigned int *) malloc(new_group->nb_elements_per_group[id_group - 1] * sizeof(unsigned int));
+        indexes[id_group - 1] = &(new_group->elements_per_group[id_group - 1][0]);
+    }
+    for(loop = 0; loop < nb_elements; ++loop)
+    {
+        *((indexes[element_to_group[loop] - 1])++) = loop + 1;
+    }
+    free(indexes);
 
     return new_group;
 }

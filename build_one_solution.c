@@ -45,7 +45,7 @@ void build_one_solution(solution sol)
         /* Mise à jour des dates de fin pour le groupe suivant */
         for(id_machine = 1; id_machine <= nb_machines; ++id_machine)
         {
-            processing_dates[id_machine - 1] = flowshop_get_availability_date(fs, id_machine);
+            processing_dates[id_machine - 1] = flowshop_get_date(fs, id_machine, flowshop_get_nb_jobs(fs));
         }
         travelling_date = routing_get_arrival_date(r);
     }

@@ -9,6 +9,8 @@
  * @param data L'instance contenant les jobs à répartir en groupes
  * @return Un tableau dynamique qui indique quel job de l'instance appartient à quel groupe
  * @warning Après utilisation, libérer les ressources en appelant : @b free()
+ * @post Le tableau retourné est @b normalisé.
+ * @see solution_new()
  * @note L'algorithme utilisé pour constituer les groupes est le suivant :
  *  <ol>
  *      <li>Tri des jobs dans l'ordre croissant des dates dues <em>(EDD = Earlier Due Date first)</em>.<br>

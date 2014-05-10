@@ -18,6 +18,7 @@ struct solution
     flowshop * flowshops; //!< Un tableau dynamique de flowshops (un flowshop par groupe)
     site ** sites_per_group; //!< Un tableau dynamique contenant des tableaux dynamiques de sites (un tableau de sites par groupe)
     routing * routings; //!< Un tableau dynamique de routings (un routing par groupe)
+    unsigned int cpu_time; //!< Le temps CPU utilisé pour l'obtention de la solution
 };
 
 
@@ -38,6 +39,7 @@ solution solution_new(instance data, unsigned int * job_to_group)
     new_solution->flowshops = (flowshop *) malloc(nb_groups * sizeof(flowshop));
     new_solution->sites_per_group = (site **) malloc(nb_groups * sizeof(site *));
     new_solution->routings = (routing *) malloc(nb_groups * sizeof(routing));
+    new_solution->cpu_time = 0;
 
     for(id_group = 1; id_group <= nb_groups; ++id_group)
     {
@@ -139,4 +141,16 @@ unsigned int solution_get_tardiness(solution __solution)
     }
 
     return tardiness;
+}
+
+
+
+void solution_set_cpu_time(solution __solution, unsigned int value)
+{
+    __solution->cpu_time = value;
+}
+
+unsigned int solution_get_cpu_time(solution __solution)
+{
+    return __solution->cpu_time;
 }

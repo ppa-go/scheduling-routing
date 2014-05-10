@@ -75,14 +75,14 @@ unsigned int * find_first_group(instance data)
     tardiness_last = calculate_tardiness(fs_last, &(jobs[job_position - 1]), r_last, &first_site_of_new_group);
 
     /* 3. Simulations pour les autres jobs */
+    jobs_insert = (job *) malloc((nb_jobs + 1) * sizeof(job));
+    sites_insert = (site *) malloc((nb_jobs + 1) * sizeof(site));
+
     for(job_position = 2; job_position <= nb_jobs; ++job_position)
     {
         nb_jobs_in_last_group = job_position - 1 - first_position_in_last_group + 1;
 
         /* 3.a Simulation de l'insertion dans le dernier groupe */
-        jobs_insert = (job *) malloc((nb_jobs_in_last_group + 1) * sizeof(job));
-        sites_insert = (site *) malloc((nb_jobs_in_last_group + 1) * sizeof(site));
-
         for(loop = 1; loop <= nb_jobs_in_last_group + 1; ++loop) { jobs_insert[loop - 1] = jobs[first_position_in_last_group - 1 + loop - 1]; }
         fs_insert = flowshop_new(nb_machines, nb_jobs_in_last_group + 1);
         for(loop = 1; loop <= nb_machines; ++loop) { flowshop_set_availability_date(fs_insert, loop, flowshop_get_availability_date(fs_last, loop)); }
@@ -94,9 +94,6 @@ unsigned int * find_first_group(instance data)
         nearest_neighboor(r_insert, sites_insert);
 
         tardiness_insert = calculate_tardiness(fs_insert, jobs_insert, r_insert, sites_insert);
-
-        free(jobs_insert);
-        free(sites_insert);
 
         /* 3.b Simulation de la création d'un nouveau groupe */
         fs_create = flowshop_new(nb_machines, 1);
@@ -138,6 +135,9 @@ unsigned int * find_first_group(instance data)
             r_last = r_create;
         }
     }
+
+    free(jobs_insert);
+    free(sites_insert);
 
     /* Conversion : 'position -> ID, groupe' vers 'ID -> groupe' */
     for(job_position = 1; job_position <= nb_jobs; ++job_position)

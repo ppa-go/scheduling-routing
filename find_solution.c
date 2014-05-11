@@ -25,13 +25,13 @@ static int compare_array(unsigned int length, unsigned int * array1, unsigned in
 
 
 
-solution find_solution(instance data, unsigned int * nb_mutations)
+solution find_solution(instance data, unsigned int nb_mutations)
 {
+    if(nb_mutations == 0) { nb_mutations = instance_get_nb_jobs(data); }
     unsigned int * parent_job_to_group = find_first_group(data);
     solution parent_solution = solution_new(data, parent_job_to_group);
-    unsigned int nb_mutations_per_iteration = (nb_mutations != NULL) ? (*nb_mutations) : (instance_get_nb_jobs(data));
-    unsigned int ** children_job_to_group = (unsigned int **) malloc(nb_mutations_per_iteration * sizeof(unsigned int *));
-    solution * children_solution = (solution *) malloc(nb_mutations_per_iteration * sizeof(solution));
+    unsigned int ** children_job_to_group = (unsigned int **) malloc(nb_mutations * sizeof(unsigned int *));
+    solution * children_solution = (solution *) malloc(nb_mutations * sizeof(solution));
     unsigned int nb_elements = instance_get_nb_jobs(data),
                  best_tardiness,
                  tardiness,
@@ -48,7 +48,7 @@ solution find_solution(instance data, unsigned int * nb_mutations)
         once_more = 0;
 
         /* Génération de 'nb_mutations' nouvelles répartitions de jobs en groupes, à partir de 'parent_job_to_group' */
-        for(id_child_solution = 1; id_child_solution <= nb_mutations_per_iteration; ++id_child_solution)
+        for(id_child_solution = 1; id_child_solution <= nb_mutations; ++id_child_solution)
         {
             /* Génération d'une nouvelle répartition des jobs en groupe par "mutation" */
             children_job_to_group[id_child_solution - 1] = mutate(nb_elements, parent_job_to_group);
@@ -70,14 +70,14 @@ solution find_solution(instance data, unsigned int * nb_mutations)
         }
 
         /* Construction des solutions associées à ces répartitions de jobs en groupe */
-        for(id_child_solution = 1; id_child_solution <= nb_mutations_per_iteration; ++id_child_solution)
+        for(id_child_solution = 1; id_child_solution <= nb_mutations; ++id_child_solution)
         {
             children_solution[id_child_solution - 1] = solution_new(data, children_job_to_group[id_child_solution - 1]);
             build_one_solution(children_solution[id_child_solution - 1]);
         }
 
         /* Recherche de la meilleure solution parmi la "mère" et ses "filles" */
-        for(id_child_solution = 1; id_child_solution <= nb_mutations_per_iteration; ++id_child_solution)
+        for(id_child_solution = 1; id_child_solution <= nb_mutations; ++id_child_solution)
         {
             tardiness = solution_get_tardiness(children_solution[id_child_solution - 1]);
             if(tardiness < best_tardiness) // La solution 'id_child_solution' est meilleure
@@ -99,7 +99,7 @@ solution find_solution(instance data, unsigned int * nb_mutations)
         }
 
         /* Libération des ressources allouées à cette itération (boucle 'do ... while') */
-        for(id_child_solution = 1; id_child_solution <= nb_mutations_per_iteration; ++id_child_solution)
+        for(id_child_solution = 1; id_child_solution <= nb_mutations; ++id_child_solution)
         {
             free(children_job_to_group[id_child_solution - 1]); // fonctionne aussi avec : NULL
             if(children_solution[id_child_solution - 1] != NULL) { solution_delete(children_solution[id_child_solution - 1]); }

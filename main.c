@@ -64,8 +64,7 @@ int main(const int argc, const char * argv[])
     const char * program_short_name,
                * input_name,
                * output_name;
-    unsigned int nb_mutations,
-                 * adress_nb_mutations;
+    unsigned int nb_mutations;
     instance data;
     solution sol;
     chrono timer;
@@ -89,7 +88,7 @@ int main(const int argc, const char * argv[])
     switch(argc)
     {
         case(3):
-            adress_nb_mutations = NULL;
+            nb_mutations = 0;
         break;
 
         case(4):
@@ -99,7 +98,6 @@ int main(const int argc, const char * argv[])
                 printf("Erreur : nombre de mutations incorrect (\"%s\")\n", argv[3]);
                 return EXIT_FAILURE;
             }
-            adress_nb_mutations = &nb_mutations;
         break;
     }
 
@@ -123,7 +121,7 @@ int main(const int argc, const char * argv[])
 
             puts("Algorithme : START");
             chrono_start(timer);
-            sol = find_solution(data, adress_nb_mutations);
+            sol = find_solution(data, nb_mutations);
             chrono_stop(timer);
             puts("Algorithme : STOP");
 

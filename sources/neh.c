@@ -1,6 +1,6 @@
-#include "../headers/neh.h"
+#include "neh.h"
 
-#include "../headers/sort.h"
+#include "sort.h"
 
 
 

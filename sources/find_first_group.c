@@ -1,9 +1,9 @@
-#include "../headers/find_first_group.h"
+#include "find_first_group.h"
 
-#include "../headers/sort.h"
-#include "../headers/neh.h"
-#include "../headers/nearest_neighboor.h"
-#include "../headers/calculate_tardiness.h"
+#include "sort.h"
+#include "neh.h"
+#include "nearest_neighboor.h"
+#include "calculate_tardiness.h"
 #include <stdlib.h>
 
 

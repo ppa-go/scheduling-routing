@@ -1,4 +1,4 @@
-#include "../headers/sort.h"
+#include "sort.h"
 
 
 

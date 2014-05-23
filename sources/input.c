@@ -1,4 +1,4 @@
-#include "../headers/input.h"
+#include "input.h"
 
 #include <stdlib.h>
 #include <stdio.h>

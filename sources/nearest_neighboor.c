@@ -1,6 +1,6 @@
-#include "../headers/nearest_neighboor.h"
+#include "nearest_neighboor.h"
 
-#include "../headers/sort.h"
+#include "sort.h"
 
 
 

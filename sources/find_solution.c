@@ -1,8 +1,8 @@
-#include "../headers/find_solution.h"
+#include "find_solution.h"
 
-#include "../headers/find_first_group.h"
-#include "../headers/mutation.h"
-#include "../headers/build_one_solution.h"
+#include "find_first_group.h"
+#include "mutation.h"
+#include "build_one_solution.h"
 #include <stdlib.h>
 
 
@@ -54,10 +54,10 @@ solution find_solution(instance data, unsigned int nb_mutations)
             children_job_to_group[id_child_solution - 1] = mutate(nb_elements, parent_job_to_group);
 
             /* Vérification : cette répartition a-t-elle été déjà générée pour cette itération ? (boucle 'while') */
-            generated_yet = !compare_array(nb_elements, parent_job_to_group, children_job_to_group[id_child_solution - 1]);
-            for(loop = 1; (loop < id_child_solution) && (!generated_yet); ++loop)
+            generated_yet = compare_array(nb_elements, parent_job_to_group, children_job_to_group[id_child_solution - 1]);
+            for(loop = 1; (loop < id_child_solution) && !generated_yet; ++loop)
             {
-                generated_yet = !compare_array(nb_elements, children_job_to_group[loop - 1], children_job_to_group[id_child_solution - 1]);
+                generated_yet = compare_array(nb_elements, children_job_to_group[loop - 1], children_job_to_group[id_child_solution - 1]);
             }
 
             /* Si la répartition avait déjà été générée, il faut en générer une autre à la place */

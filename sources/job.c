@@ -1,4 +1,4 @@
-#include "../headers/job.h"
+#include "job.h"
 
 #include <stdlib.h>
 

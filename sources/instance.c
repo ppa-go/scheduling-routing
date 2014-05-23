@@ -1,4 +1,4 @@
-#include "../headers/instance.h"
+#include "instance.h"
 
 #include <stdlib.h>
 

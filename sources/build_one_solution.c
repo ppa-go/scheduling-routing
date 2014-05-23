@@ -1,7 +1,7 @@
-#include "../headers/build_one_solution.h"
+#include "build_one_solution.h"
 
-#include "../headers/neh.h"
-#include "../headers/nearest_neighboor.h"
+#include "neh.h"
+#include "nearest_neighboor.h"
 #include <stdlib.h>
 
 

@@ -1,4 +1,4 @@
-#include "../headers/chrono.h"
+#include "chrono.h"
 
 #include <stdlib.h>
 #include <time.h>

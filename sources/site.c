@@ -1,4 +1,4 @@
-#include "../headers/site.h"
+#include "site.h"
 
 #include <stdlib.h>
 

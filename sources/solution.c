@@ -1,7 +1,7 @@
-#include "solution.h"
+#include "../headers/solution.h"
 
-#include "group.h"
-#include "calculate_tardiness.h"
+#include "../headers/group.h"
+#include "../headers/calculate_tardiness.h"
 #include <stdlib.h>
 
 

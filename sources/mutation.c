@@ -1,4 +1,4 @@
-#include "mutation.h"
+#include "../headers/mutation.h"
 
 #include <stdlib.h>
 

@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "input.h"
-#include "output.h"
-#include "find_solution.h"
-#include "chrono.h"
+#include "../headers/input.h"
+#include "../headers/output.h"
+#include "../headers/find_solution.h"
+#include "../headers/chrono.h"
 
 
 

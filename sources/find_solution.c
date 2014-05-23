@@ -1,8 +1,8 @@
-#include "find_solution.h"
+#include "../headers/find_solution.h"
 
-#include "find_first_group.h"
-#include "mutation.h"
-#include "build_one_solution.h"
+#include "../headers/find_first_group.h"
+#include "../headers/mutation.h"
+#include "../headers/build_one_solution.h"
 #include <stdlib.h>
 
 

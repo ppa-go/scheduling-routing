@@ -1,4 +1,4 @@
-#include "flowshop.h"
+#include "../headers/flowshop.h"
 
 #include <stdlib.h>
 

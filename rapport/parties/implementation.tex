@@ -1,5 +1,50 @@
 \chapter{Implémentation}
 
-% ####################################################################################################
 
+% ####################################################################################################
+	\paragraph{}
+	Comme spécifié dans le cahier des charges, notre programme a été implémenté en utilisant le langage C. Pour fonctionner, le programme a besoin d'un fichier contenant différentes données qui sont présentées d'une manière bien précise. À la fin de l'exécution, le programme crée un fichier de sortie contenant des données également présentées d'une manière bien précise. Dans un premier temps, nous allons détailler le format des fichiers d'entrée et de sortie, puis, dans un deuxième temps, la documentation qui présente l'architecture du projet.
+%
+
+% ####################################################################################################
+	\section{Format des fichiers}
+		\subsection{Fichiers d'entrée}
+	
+	\paragraph{}
+	Comme présenté précédemment, les fichiers d'entrée sont présentés d'une manière bien précise. Concernant le nom des fichiers, ils sont tous nommées de la même manière, à savoir \texttt{I\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance)}.txt. Voici comment sont présentés ces fichiers. 
+	\begin{flushleft}
+	(nombre de machines)(tabulation)(nombre de jobs) \\
+	(durées sur la première machine, séparées par des tabulations) \\
+	... \\
+	(durées sur la dernière machine, séparées par des tabulations) \\
+	(dates dues, séparées par des tabulations) \\
+	(distances de l'usine aux autres sites, séparées par des tabulations) \\
+	(distances du premier site aux autres sites, séparées par des tabulations) \\
+	... \\
+	(distances du dernier site aux autres sites, séparées par des tabulations)
+	\end{flushleft}
+%
+
+% ####################################################################################################
+	\subsection{Fichiers de sortie}
+	
+	\paragraph{}
+	Les fichiers de sorties sont tous nommés de la même manière, à savoir \texttt{S\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance).txt}. Voici comment sont présentés ces fichiers. 
+	\begin{flushleft}
+	(somme des retards) \\
+	(temps CPU en millisecondes) \\
+	(numéros des jobs selon la séquence d'ordonnancement, séparés par des tabulations) \\
+	(nombre de tournées) \\
+	(nombres de sites par tournée, séparés par des tabulations) \\
+	(numéros des sites de la première tournée selon l'ordre de parcours, séparés par des tabulations) \\
+	... \\
+	(numéros des sites de la première tournée selon l'ordre de parcours, séparés par des tabulations) \\
+	\end{flushleft}
+%
+
+% ####################################################################################################
+	\section{Documentation}
+	
+	\paragraph{}
+	Le projet a été documenté grâce à l'outils doxygen. Pour visualiser la documentation, il faut se rendre dans le dossier du projet et ouvrir le fichier index.html qui se trouve dans le dossier \texttt{Documentation/ html/}
 %

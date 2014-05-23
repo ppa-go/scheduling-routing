@@ -1,0 +1,56 @@
+\documentclass[twoside,UTF8,final]{EPURapport}
+
+\thedocument{Rapport - Projet de Sciences de la Décision}%
+{Heuristique pour un problème d'ordonnancement et de tournées}%
+{Heuristique pour un problème d'ordonnancement et de tournées}
+
+\grade{Département Informatique \\ 4\ieme{} année \\ 2013 - 2014}
+
+\authors{%
+	\category{Étudiants}{%
+		\name{Pierre-Antoine MORIN} \mail{pierre-antoine.morin@etu.univ-tours.fr}
+		\name{Armand RENAUDEAU} \mail{armand.renaudeau@etu.univ-tours.fr}
+	}
+	\details{DI4 2013 - 2014}
+}
+
+\supervisors{%
+	\category{Encadrant}{%
+		\name{M. Jean-Charles BILLAUT} \mail{jean-charles.billaut@univ-tours.fr}
+		% \details{(des détails)}
+	}
+    \details{%
+        Université François-Rabelais, Tours
+        % (autres détails) \\
+        % \href{lien complet}{\texttt{texte affiché pour le lien}}
+    }
+}
+
+\abstracts{Implémentation en langage C d'une heuristique pour un problème d'ordonnancement et de tournées. Le principe est de regrouper les jobs en groupes, pour lesquels l'algorithme de NEH fournit l'ordonnancement et la recherche du plus proche voisin fournit la tournée. Une descente locale est réalisée à partir d'une solution initiale.}
+{ordonnancement, tournée, heuristique, descente locale}
+{Résumé EN}
+{Mots-clés EN}
+
+% \entitylogo{logos/(nom du fichier, sans extension)}
+
+% \nolistoffigures
+% \nolistoftables
+
+% \usepackage[options du package]{nom du package}
+
+\begin{document}
+
+\input{parties/introduction}
+
+\input{parties/presentation-du-probleme}
+\input{parties/cahier-des-charges}
+\input{parties/gestion-de-projet}
+\input{parties/algorithme-heuristique}
+\input{parties/implementation}
+\input{parties/resultats}
+
+\input{parties/conclusion}
+
+\annexes
+
+\end{document}

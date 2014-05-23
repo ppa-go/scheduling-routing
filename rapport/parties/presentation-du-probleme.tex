@@ -2,4 +2,110 @@
 
 % ####################################################################################################
 
-%
+\section{Description générale}
+
+\paragraph{}
+Une entreprise est spécialisée dans la fabrication de produits. Le procédé de fabrication est unique, il correspond à la gamme suivante :
+tous les jobs doivent être traités successivement par toutes les machines, dans le même ordre.
+L’atelier de production (l’usine) est organisé en flowshop.
+
+\paragraph{}
+Après fabrication, l’entreprise assure la livraison de la marchandise jusqu’à un site choisi par le client. Pour ce faire, l’entreprise dispose d’un unique véhicule, de capacité supposée infinie. (au cours d’une tournée de livraison, on peut transporter une quantité de marchandise aussi grande que voulue)
+
+\paragraph{}
+Le carnet de commandes est constitué de tâches (jobs), pour lesquelles on connaît :
+\begin{itemize}
+\item la durée de passage sur chacune des machines ;
+\item la date à laquelle le client souhaite être livré ;
+\item le site sur lequel livrer la marchandise.
+\end{itemize}
+
+\paragraph{}
+Les temps de trajet d’un site à un autre, y compris l’usine, sont tous connus.
+
+\paragraph{}
+Le retard d’un job est défini ainsi :
+\begin{itemize}
+\item Si la marchandise est livrée sur le site choisi par le client avant la date demandée, alors le retard est nul.
+\item En revanche, si cette date limite est dépassée, le retard est égal à la différence entre la date de livraison effective et la date de livraison demandée.
+\end{itemize}
+
+\paragraph{}
+\textbf{Quelle organisation en atelier et quelles tournées de livraison effectuer afin de minimiser la somme des retards ?}
+
+\newpage
+
+% ####################################################################################################
+
+\section{Formulation mathématique}
+
+\subsection*{Données caractérisant la taille d'une instance}
+
+\begin{tabular}{cl}
+$ n $ & Nombre de jobs $ J_{j} $ = Nombre de sites $ S_{a} $ en plus de l'usine $ U = S_{0} $ \\
+$ m $ & Nombre de machines $ M_{i} $ \\
+\end{tabular}
+
+\subsection*{Données caractérisant un job $ J_{j} $}
+
+\begin{tabular}{ccl}
+$ \begin{array}{l} \forall i = 1 \, .. \, m \\ \forall j = 1 \, .. \, n \end{array} $ & $ p_{i \, j}$ & \textit{Processing time} du job $ J_{j} $ sur la machine $ M_{i} $ \\
+\\
+$ \forall j = 1 \, .. \, n $ & $ d_{j} $ & \textit{Due date} du job $ J_{j} $ \\
+\end{tabular}
+
+\subsection*{Données caractérisant les durées de transport de marchandises}
+
+\begin{tabular}{ccl}
+$ \begin{array}{l} \forall a = 0 \, .. \, n \\ \forall b = 0 \, .. \, n \end{array} $ & $ t_{a \, b} $ & Durée de voyage pour aller du site $ S_{a} $ au site $ S_{b} $ \\
+\end{tabular}
+
+\subsection*{Remarque importante}
+
+Le job $ J_{j} $ doit être livré sur le site $ S_{j} $.
+On suppose que tous les sites sont différents.
+En pratique, si les jobs $ J_{a} $ et $ J_{b} $ doivent être livrés sur le même site, on posera : $ t_{a \, b} = t_{b \, a} = 0 $.
+
+\subsection*{Format des données}
+
+\begin{center}
+
+\begin{tabular}{ccc}
+
+\begin{tabular}{c|ccccc|}
+$ \mathcal{P} $ & $ J_{1} $ & $ \cdots $ & $ J_{j} $ & $ \cdots $ & $ J_{n} $ \\
+\hline
+$ \mathcal{M}_{1} $ & $ p_{1 \, 1} $ & $ \cdots $ & $ p_{1 \, j} $ & $ \cdots $ & $ p_{1 \, n} $ \\
+$ \vdots $ & $ \vdots $ & & $ \vdots $ & & $ \vdots $ \\
+$ \mathcal{M}_{i} $ & $ p_{i \, 1} $ & $ \cdots $ & $ p_{i \, j} $ & $ \cdots $ & $ p_{i \, n} $ \\
+$ \vdots $ & $ \vdots $ & & $ \vdots $ & & $ \vdots $ \\
+$ \mathcal{M}_{m} $ & $ p_{m \, 1} $ & $ \cdots $ & $ p_{m \, j} $ & $ \cdots $ & $ p_{m \, n} $ \\
+\hline
+$ \mathcal{D} $ & $ d_{1} $ & $ \cdots $ & $ d_{j} $ & $ \cdots $ & $ d_{n} $ \\
+\hline
+\end{tabular}
+
+& &
+
+\begin{tabular}{c|cccccc|}
+$ \mathcal{T} $ & $ U $ & $ S_{1} $ & $ \cdots $ & $ S_{b} $ & $ \cdots $ & $ S_{n} $ \\
+\hline
+$ U $ & \textbf{0} & $ t_{0 \, 1} $ & $ \cdots $ & $ t_{0 \, b} $ & $ \cdots $ & $ t_{0 \, n} $ \\
+$ S_{1} $ & $ t_{1 \, 0} $ & \textbf{0} & $ \cdots $ & $ t_{1 \, b} $ & $ \cdots $ & $ t_{1 \, n} $ \\
+$ \vdots $ & $ \vdots $ & $ \vdots $ & & $ \vdots $ & & $ \vdots $ \\
+$ S_{a} $ & $ t_{a \, 0} $ & $ t_{a \, 1} $ & $ \cdots $ & $ t_{a \, b} $ & $ \cdots $ & $ t_{a \, n} $ \\
+$ \vdots $ & $ \vdots $ & $ \vdots $ & & $ \vdots $ & & $ \vdots $ \\
+$ S_{n} $ & $ t_{n \, 0} $ & $ t_{n \, 1} $ & $ \cdots $ & $ t_{n \, b} $ & $ \cdots $ & \textbf{0} \\
+\hline
+\end{tabular}
+
+\end{tabular}
+
+\end{center}
+
+\subsection*{Objectif}
+
+\begin{center}
+\[ minimiser \left( \sum_{j = 1}^{n}{T_j} \right) \]
+où la variable $ T_j $ représente le retard associé à la livraison du job $ J_j $. ($ T_j \geq 0 $)
+\end{center}

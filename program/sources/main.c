@@ -78,8 +78,8 @@ int main(const int argc, const char * argv[])
         printf("Syntaxe pour utiliser ce programme :\t");
         printf("%s  input_name  output_name  nb_mutations\n", program_short_name);
         puts("\tinput_name  \tnom du ficher contenant l'instance (obligatoire)");
-        puts("\toutput_name \tnom du ficher dans lequel écrire la solution (obligatoire)");
-        puts("\tnb_mutations\tnombre de mutations à chaque iteration de l'algorithme (optionnel ; valeur par defaut = nombre de jobs dans l'instance)");
+        puts("\toutput_name \tnom du ficher dans lequel ecrire la solution (obligatoire)");
+        puts("\tnb_mutations\tnombre de mutations a chaque iteration de l'algorithme (optionnel ; valeur par defaut = nombre de jobs dans l'instance)");
         return EXIT_FAILURE;
     }
 

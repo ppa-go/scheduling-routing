@@ -136,3 +136,8 @@ L'algorithme continue jusqu'à ce que la solution mère soit meilleure ou équiv
 \paragraph{}
 Le nombre de solutions filles considérées à chaque itération ($ nombre\_mutations $) est un paramètre optionnel de l'algorithme.
 Si aucune valeur n'est spécifiée lors de l'invocation du programme, la valeur par défaut utilisée est égale au nombre de jobs dans l'instance.
+
+\paragraph{Attention}
+Le voisinage d'une solution est un ensemble de taille finie. Or, à chaque itération, l'algorithme fait en sorte de générer des solutions distinctes.
+Par conséquent, si la valeur du paramètre $ nombre\_mutations $ est trop élevée, le programme tournera indéfiniment, car il restera bloqué
+au niveau de la boucle de génération des solutions filles.

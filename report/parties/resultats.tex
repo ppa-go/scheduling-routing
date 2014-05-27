@@ -2,12 +2,87 @@
 
 % ####################################################################################################
 
+\section{Automatisation du processus de test : scripts Bash}
+
+\paragraph{}
+Pour tester notre programme, nous avons sollicité le doctorant Quang Chieu Ta, dont le sujet de thèse
+porte sur le problème mathématique dont il est question dans ce projet de \og Sciences de la Décision \fg{}.
+Celui-ci nous a fourni 160 instances, réparties en 16 classes contenant 10 instances chacune :
+\begin{itemize}
+\item[>>] Instance à 2 machines et ...
+    \begin{itemize}
+    \item ... 10 jobs
+    \item ... 20 jobs
+    \item ... 30 jobs
+    \item ... 50 jobs
+    \item ... 70 jobs
+    \item ... 100 jobs
+    \item ... 150 jobs
+    \item ... 200 jobs
+    \item ... 250 jobs
+    \item ... 300 jobs
+    \end{itemize}
+\item[>>] Instance à 4 machines et ...
+    \begin{itemize}
+    \item ... 10 jobs
+    \item ... 30 jobs
+    \item ... 50 jobs
+    \item ... 100 jobs
+    \item ... 150 jobs
+    \item ... 200 jobs
+    \end{itemize}
+\end{itemize}
+
+\paragraph{}
+Afin de faciliter la phase de réalisation des test, nous avons utilisé deux scripts Bash :
+\begin{enumerate}
+\item \texttt{call.sh} : script utile à l'invocation du programme de manière automatisée
+\item \texttt{compare.sh} : script utile à la comparaison des solutions retournées après exécution du programme
+\end{enumerate}
+\paragraph{}
+Ces deux scripts sont disponibles dans le dossier \texttt{scripts/} fourni avec ce rapport.
+
+\subsection{Automatisation de l'invocation de l'exécutable sur plusieurs instances}
+
+\paragraph{}
+Le script \texttt{call.sh} prend en entrée les paramètres suivants :
+\begin{enumerate}
+\item le chemin vers le fichier exécutable correspondant au programme ;
+\item le chemin vers un dossier \texttt{instances/} contenant des instances ;
+\item le chemin vers un dossier \texttt{solutions/} (existant ou à créer) qui contiendra les solutions ;
+\item le nombre de mutations à effectuer à chaque itération (optionnel).
+\end{enumerate}
+\paragraph{}
+Le script invoque automatiquement le programme sur toutes les instances du dossier \texttt{instances/} et les écrit dans le dossier \texttt{solutions/}.
+
+\subsection{Automatisation de la comparaison des résultats obtenus}
+
+\paragraph{}
+Le script \texttt{compare.sh} prend en entrée les paramètres suivants :
+\begin{enumerate}
+\item le chemin vers un dossier \texttt{solutions\_1/} contenant des solutions ;
+\item le chemin vers un dossier \texttt{solutions\_2/} contenant des solutions ;
+\end{enumerate}
+\paragraph{}
+Le script recherche tous les couples de fichiers de solutions associés à une même instance :
+\begin{itemize}
+\item l'un des deux fichiers est situé dans le dossier \texttt{solutions\_1/} ;
+\item l'autre fichier est situé dans le dossier \texttt{solutions\_2/} ;
+\item les deux fichiers portent le même nom \texttt{name.txt}.
+\end{itemize}
+Si les deux fichiers sont différents, \texttt{name.txt} est affiché à l'écran.
+\paragraph{}
+À la fin, le programme affiche le nombre total de couples trouvés, le nombre de couples constitués de deux solutions différentes,
+avec leur proportion (en pourcentage).
+
+% ####################################################################################################
+
 \section{Résultats de l'heuristique}
 
-%
+\#\#\# À FAIRE !!! \#\#\#
 
 % ####################################################################################################
 
 \section{Comparaison des résultats par rapport à une autre heuristique}
 
-%
+\#\#\# À FAIRE !!! \#\#\#

@@ -68,8 +68,33 @@ Dans cet exemple, les 10 jobs sont répartis dans les tournées suivantes :
 \item Tournée de livraison 4 : jobs 1, 2, 5 et 10.
 \end{enumerate}
 
-\paragraph{Définition du voisinage d'une solution}
-\#\#\# À COMPLÉTER \#\#\#
+\paragraph{Définition du voisinage d'une solution\\}
+Étant donné une solution appelée \og solution mère \fg{}, le voisinage de cette solution est un ensemble de solutions,
+appelées \og solutions filles \fg{}. La répartition des jobs en tournées de livraison pour ces solutions filles suit la règle suivante :
+\begin{enumerate}
+\item Tous les jobs \textit{sauf un} sont répartis dans les mêmes tournées de livraison que dans la solution mère.
+\item Le \textit{job restant} est inséré dans une autre tournée : s'il appartenait à la tournée $ k $,
+il appartient désormais soit à la tournée $ k - 1 $ (précédente), soit à la tournée $ k + 1 $ (suivante).
+\end{enumerate}
+
+\paragraph{Exemple\\}
+Considérons la solution précédente comme solution mère. En diminuant le numéro de la tournée associée au job 5,
+on obtient la solution fille suivante :
+
+\begin{figure}[H] % here (h) forced
+\centering
+\includegraphics[scale=0.5]{voisinage-fille}
+\caption{\label{fig:voisinage-fille}Exemple de solution fille}
+\end{figure}
+
+\paragraph{}
+Dans cet exemple, les 10 jobs sont répartis dans les tournées suivantes :
+\begin{enumerate}
+\item Tournée de livraison 1 : jobs 4, 7 et 8 ;
+\item Tournée de livraison 2 : job 6 ;
+\item Tournée de livraison 3 : jobs 3, 5 et 9 ;
+\item Tournée de livraison 4 : jobs 1, 2 et 10.
+\end{enumerate}
 
 % ####################################################################################################
 
@@ -86,7 +111,7 @@ L'algorithme utilisé est le suivant :
 \STATE continuer $ \leftarrow $ \FALSE
 \STATE \COMMENT{Génération de solutions filles}
 \FOR{$ k = 1 $ \TO $ nombre\_mutations $}
-\STATE solution\_fille[$ k $] $ \leftarrow $ generer\_mutation(solution\_mere)
+\STATE solution\_fille[$ k $] $ \leftarrow $ générer\_mutation(solution\_mere)
 \STATE \COMMENT{L'algorithme fait en sorte que toutes les solutions filles \\ soient différentes de la solution mère et des autres solutions filles.}
 \ENDFOR
 \STATE \COMMENT{Sélection de la meilleure solution fille}
@@ -103,6 +128,11 @@ L'algorithme utilisé est le suivant :
 \end{algorithm}
 
 \paragraph{}
-À partir de la solution \og mère \fg{} initiale trouvée, certaines solutions \og filles \fg{} sont sélectionnées aléatoirement dans le voisinage.
+À partir de la solution \og mère \fg{} initiale trouvée, certaines solutions \og filles \fg{} sont sélectionnées \textbf{aléatoirement} dans le voisinage.
+Ce processus est appelée \og mutation \fg{}.
 Si l'une des solutions filles est meilleure que la solution mère, elle devient la solution mère utilisée pour la prochaine itération.
 L'algorithme continue jusqu'à ce que la solution mère soit meilleure ou équivalente à toutes ses filles (critère : somme des retards).
+
+\paragraph{}
+Le nombre de solutions filles considérées à chaque itération ($ nombre\_mutations $) est un paramètre optionnel de l'algorithme.
+Si aucune valeur n'est spécifiée lors de l'invocation du programme, la valeur par défaut utilisée est égale au nombre de jobs dans l'instance.

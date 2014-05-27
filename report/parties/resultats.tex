@@ -79,7 +79,53 @@ avec leur proportion (en pourcentage).
 
 \section{Résultats de l'heuristique}
 
-\#\#\# À FAIRE !!! \#\#\#
+\paragraph{}
+Nous avons utilisé le script \texttt{call.sh} sur toutes les instances dont nous disposons, regroupées dans le dossier \texttt{files/instances/}.
+Dans le dossier \texttt{files/solutions/} fourni avec ce rapport, les solutions obtenues avec différentes valeurs du paramètre \og nombre de mutations \fg{} pour toutes les instances sont fournies. Ces solutions sont regroupées en sous-dossiers de la manière suivante :
+\begin{center}
+\texttt{S\_(valeur du paramètre : nombre de mutations)\_(lettre de \emph{a} à \emph{d})}
+\end{center}
+\begin{itemize}
+\item Si la valeur du paramètre \og nombre de mutations \fg{} est vide, alors le script a été appelé sans préciser de valeur :
+pour chaque instance, le nombre de mutations par itération est égal au nombre de jobs dans l'instance.
+\item Les lettres servent à différencier plusieurs appels au script avec la même valeur pour le paramètre \og nombre de mutations \fg{}.
+\end{itemize}
+
+\paragraph{}
+Des fichiers textes de comparaison des solutions obtenues sont également disponibles dans le dossier \texttt{files/solutions/compare/}.
+Leur contenu est une copie de ce qu'affiche le script \texttt{compare.sh}.
+Leur nom est de la forme suivante :
+\begin{center}
+\texttt{compare\_(nom dossier solutions 1)\_(nom dossier solutions 2).txt}
+\end{center}
+
+\subsection{Variabilité des solutions générées}
+
+\paragraph{}
+L'heuristique implémentée est extrêmement instable : en appelant deux fois de suite le programme sur la même instance, les probabilités
+d'obtenir deux solutions différentes sont élevées. Ceci est dû aux choix aléatoires de solutions dans le voisinage de la solution mère
+dans l'algorithme de descente locale.
+
+\paragraph{}
+Pour plus de détails, veuillez consulter les données des fichiers de comparaison, pour une même valeur du paramètre \og nombre de mutations \fg{}
+et des lettres différentes.
+
+\subsection{Influence du paramètre : nombre de mutations}
+
+\paragraph{}
+Si on augmente la valeur du paramètre \og nombre de mutations \fg{} :
+\begin{enumerate}
+\item Les chances d'obtenir des solutions proches d'une solution optimale sont de plus en plus grandes. (La valeur de la somme des retards diminue.)
+\item Le temps d'exécution augmente :
+    \begin{itemize}
+    \item raisonnablement pour des instances avec peu de jobs (jusqu'à 100 jobs, moins de 5 secondes environ) ;
+    \item déraisonnablement pour des instances avec beaucoup de jobs (au-delà de 150 jobs, 1 à 10 minutes environ).
+    \end{itemize}
+\item Le phénomène d'instabilité est accru.
+\end{enumerate}
+
+\paragraph{}
+Pour plus de détails, veuillez consulter les données des fichiers de comparaison, pour des valeurs différentes du paramètre \og nombre de mutations \fg{} (quelles que soient les lettres).
 
 % ####################################################################################################
 

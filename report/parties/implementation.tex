@@ -4,6 +4,9 @@
 % ####################################################################################################
 	\paragraph{}
 	Comme spécifié dans le cahier des charges, notre programme a été implémenté en utilisant le langage C. Pour fonctionner, le programme a besoin d'un fichier contenant différentes données qui sont présentées d'une manière bien précise. À la fin de l'exécution, le programme crée un fichier de sortie contenant des données également présentées d'une manière bien précise. Dans un premier temps, nous allons détailler le format des fichiers d'entrée et de sortie, puis, dans un deuxième temps, la documentation qui présente l'architecture du projet.
+	
+	\paragraph{}
+	Les fichiers d'en-têtes sont disponibles dans le dossier \texttt{program/headers/} et les fichiers sources sont disponibles dans le dossier \texttt{program/sources/}. La création du programme compilé peut se faire à l'aide de la commande \textit{make} grâce au \textit{Makefile} qui est présent dans le dossier \texttt{program/}. L'executable alors généré est présent dans le dossier \texttt{program/bin/} et se nomme \textit{program.exe}.
 %
 
 % ####################################################################################################
@@ -46,5 +49,16 @@
 	\section{Documentation}
 	
 	\paragraph{}
-	Le projet a été documenté grâce à l'outils doxygen. Pour visualiser la documentation, il faut se rendre dans le dossier du projet et ouvrir le fichier index.html qui se trouve dans le dossier \texttt{Documentation/ html/}
+	Le projet a été documenté grâce à l'outils doxygen. Pour visualiser la documentation, il faut se rendre dans le dossier du projet et ouvrir le fichier index.html qui se trouve dans le dossier \texttt{documentation/ html/}
+
+% ####################################################################################################	
+	\section{Utilisation du programme}
+	
+	\paragraph{}
+	Pour fonctionner, le programme que nous avons réalisé a besoin de plusieurs paramètres :
+	\begin{enumerate}
+		\item Le fichier contanant l'instance à traiter.
+		\item Le fichier contenant les résultats après l'execution du programme.
+		\item Le nombre de mutuations. Ce paramètre est optionnel, c'est-à-dire que s'il n'est pas indiquer, le nombre de mutations effectuées est égal au nombre de jobs de l'instance.
+	\end{enumerate}	
 %

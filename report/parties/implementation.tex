@@ -14,8 +14,14 @@
 		\subsection{Fichiers d'entrée}
 	
 	\paragraph{}
-	Comme présenté précédemment, les fichiers d'entrée sont présentés d'une manière bien précise. Concernant le nom des fichiers, ils sont tous nommées de la même manière, à savoir \texttt{I\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance)}.txt. Voici comment sont présentés ces fichiers. 
-	\begin{flushleft}
+	Comme indiqué précédemment, les fichiers d'entrée sont structurés d'une manière bien précise. Concernant le nom des fichiers, ils sont tous nommés de la même manière :
+	\paragraph{}	
+	\texttt{I\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance).txt}.
+	\paragraph{}
+	Voici comment sont structurés ces fichiers.
+	\paragraph{}
+	\fbox{
+	\begin{minipage}{15cm}
 	(nombre de machines)(tabulation)(nombre de jobs) \\
 	(durées sur la première machine, séparées par des tabulations) \\
 	... \\
@@ -25,15 +31,21 @@
 	(distances du premier site aux autres sites, séparées par des tabulations) \\
 	... \\
 	(distances du dernier site aux autres sites, séparées par des tabulations)
-	\end{flushleft}
-%
+	\end{minipage}
+	}
 
 % ####################################################################################################
 	\subsection{Fichiers de sortie}
 	
 	\paragraph{}
-	Les fichiers de sorties sont tous nommés de la même manière, à savoir \texttt{S\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance).txt}. Voici comment sont présentés ces fichiers. 
-	\begin{flushleft}
+	Les fichiers de sorties sont tous nommés de la même manière :
+	\paragraph{}
+	\texttt{S\_(nombre de machines)\_(nombre de jobs)\_(numero d'instance).txt}.
+	\paragraph{}
+	Voici comment sont structurés ces fichiers.
+	\paragraph{}
+	\fbox{
+	\begin{minipage}{15cm}
 	(somme des retards) \\
 	(temps CPU en millisecondes) \\
 	(numéros des jobs selon la séquence d'ordonnancement, séparés par des tabulations) \\
@@ -42,8 +54,8 @@
 	(numéros des sites de la première tournée selon l'ordre de parcours, séparés par des tabulations) \\
 	... \\
 	(numéros des sites de la première tournée selon l'ordre de parcours, séparés par des tabulations) \\
-	\end{flushleft}
-%
+	\end{minipage}
+	}
 
 % ####################################################################################################
 	\section{Documentation}

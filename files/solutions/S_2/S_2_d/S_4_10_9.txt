@@ -1,0 +1,11 @@
+3918	## Somme des retards
+0	## Temps CPU (millisecondes)
+2	4	1	5	10	6	3	8	9	7	## Ordonnancement
+6	## Nombre de tournées
+1	2	1	2	2	2	## Nombre de sites par tournée
+2	## Tournée 1
+1	4	## Tournée 2
+5	## Tournée 3
+10	6	## Tournée 4
+3	8	## Tournée 5
+7	9	## Tournée 6

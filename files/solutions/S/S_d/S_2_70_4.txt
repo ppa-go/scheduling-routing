@@ -1,0 +1,19 @@
+15693	## Somme des retards
+510	## Temps CPU (millisecondes)
+64	33	53	23	25	49	4	12	44	5	1	30	54	40	51	7	29	65	20	27	67	32	61	19	28	16	6	56	46	21	59	34	3	38	43	26	37	69	18	2	24	35	15	8	10	47	55	68	62	66	41	58	48	42	70	39	9	17	13	14	63	50	31	11	22	60	57	52	45	36	## Ordonnancement
+14	## Nombre de tournées
+1	3	4	6	6	5	5	8	8	8	7	4	3	2	## Nombre de sites par tournée
+64	## Tournée 1
+23	33	53	## Tournée 2
+25	4	49	12	## Tournée 3
+54	30	5	1	44	40	## Tournée 4
+7	51	29	20	27	65	## Tournée 5
+67	32	61	19	28	## Tournée 6
+6	56	16	46	21	## Tournée 7
+59	37	38	3	26	69	34	43	## Tournée 8
+2	15	10	18	35	24	8	47	## Tournée 9
+48	68	41	66	58	62	42	55	## Tournée 10
+9	13	14	17	70	39	63	## Tournée 11
+31	11	22	50	## Tournée 12
+57	52	60	## Tournée 13
+36	45	## Tournée 14
